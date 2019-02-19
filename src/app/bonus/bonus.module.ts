@@ -1,25 +1,28 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { IonicModule } from '@ionic/angular';
-import { RouterModule } from '@angular/router';
+import { Routes, RouterModule } from '@angular/router';
 
-import { ListPage } from './list.page';
+import { IonicModule } from '@ionic/angular';
+
+import { BonusPage } from './bonus.page';
 import { CanDeactivateGuard } from '../can-deactivate.guard';
+
+const routes: Routes = [
+  {
+    path: '',
+    component: BonusPage,
+    canDeactivate: [CanDeactivateGuard]
+  }
+];
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    RouterModule.forChild([
-      {
-        path: '',
-        component: ListPage,
-        canDeactivate: [CanDeactivateGuard]
-      }
-    ])
+    RouterModule.forChild(routes)
   ],
-  declarations: [ListPage]
+  declarations: [BonusPage]
 })
-export class ListPageModule {}
+export class BonusPageModule {}
